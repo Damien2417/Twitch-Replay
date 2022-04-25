@@ -1,0 +1,22 @@
+{
+  "name": "Twitch Replay",
+  "version": "1.0",
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "manifest_version": 2,
+  "permissions": ["webRequest","tabs","<all_urls>"],
+  "background": {
+	  "scripts":["background.js"],
+	  "persistent": true
+  },
+  
+  "content_scripts": [{
+	"css": [ "bootstrap.min.css" ],
+    "matches": ["*://*.twitch.tv/*"],
+    "js": ["popper.min.js","jquery.js","bootstrap.min.js","popup.js"]
+  }
+ ]
+}
