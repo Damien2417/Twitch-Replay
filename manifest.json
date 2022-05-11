@@ -14,9 +14,8 @@
   },
   
   "content_scripts": [{
-	"css": [ "bootstrap.min.css" ],
     "matches": ["*://*.twitch.tv/*"],
-    "js": ["popper.min.js","jquery.js","bootstrap.min.js","popup.js"]
+    "js": ["jquery.js","popup.js"]
   }
  ]
 }

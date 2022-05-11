@@ -1,37 +1,54 @@
   //the event occurred
 $(window).on('load', function() {
 	if($('.player-controls__right-control-group').length){ 
-		if(!$('#clean').length){ 
+		if(!$('.clean').length){ 
 			var button2=document.createElement("button");
-			button2.id="clean"
+			button2.classList.add("clean");
 			button2.innerText="Clean"; 
 			$('.player-controls__right-control-group:last-child').prepend(button2);
-			$("#clean").css({"margin-left": "2%","margin-right": "1%","color":"white"});
+			$(".clean").css({"margin-left": "2%","margin-right": "1%","color":"white"});
 		}
 		
-		if(!$('#start').length){ 
+		if(!$('.start').length){ 
 			var button2=document.createElement("button");
-			button2.id="start"
+			button2.classList.add("start");
 			button2.innerText="Start"; 
 			$('.player-controls__right-control-group:last-child').prepend(button2);
-			$("#start").css({"margin-left": "3%","color":"white"});
+			$(".start").css({"margin-left": "3%","color":"white"});
 		}
 		//$('[data-toggle="popover"]').popover();
-		document.getElementById("start").addEventListener('click', start);
-		document.getElementById("clean").addEventListener('click', clean);	
+		$( ".start" ).click(function() {
+			console.log("start");
+			let check="start";
+			if($(this).text()=="Stop"){
+				check="stop";
+				$(this).text("Start");
+			}
+			else
+				$(this).text("Stop");
+			chrome.runtime.sendMessage({method: check}, function(response) {
+			});
+		});
+		
+		$( ".clean" ).click(function() {
+			console.log("cleaning...");
+			$(".size").text("0mo");
+			chrome.runtime.sendMessage({method: 'clean'}, function(response) {
+			});
+		});
 
 		chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 		  if (request.method == 'blobs'){
 			  var size=parseFloat(request.data.toFixed(1));
-			  if(!$("#size").length){
+			  if(!$(".size").length){
 				var div=document.createElement("div");
-				div.id="size";
+				div.classList.add("size");
 				div.innerText="0mo";				
 
 				$('.player-controls__right-control-group:last-child').prepend(div)
-				$("#size").css({"margin-left": "1%","color":"white"});
+				$(".size").css({"margin-left": "1%","color":"white"});
 			  }
-			  $("#size").text(size+"mo");
+			  $(".size").text(size+"mo");
 			  
 			  if(!$(".download").length){
 				var button=document.createElement("button");
@@ -41,7 +58,9 @@ $(window).on('load', function() {
 								
 				button.classList.add("download");
 				button.addEventListener("click", function() {
-					downloadManager(button.id);
+					console.log("downloading...");
+					chrome.runtime.sendMessage({method: 'download',id:button.id}, function(response) {
+					});
 				});
 				$('.player-controls__right-control-group:last-child').prepend(button)
 				$("#video"+request.data2).css({"color":"white"});
@@ -54,30 +73,3 @@ $(window).on('load', function() {
 	}
 });
 
-
-	
-		
-function start(){
-	let check="start";
-	if($("#start").text()=="Stop"){
-		check="stop";
-		$("#start").text("Start");
-	}
-	else
-		$("#start").text("Stop");
-	chrome.runtime.sendMessage({method: check}, function(response) {
-    });
-}
-
-function clean(){
-	console.log("cleaning...");
-	$("#size").text("0mo");
-	chrome.runtime.sendMessage({method: 'clean'}, function(response) {
-    });
-	//document.getElementById("urls").innerHTML="";
-}
-function downloadManager(idToDownload){
-	console.log("downloading...");
-	chrome.runtime.sendMessage({method: 'download',id:idToDownload}, function(response) {
-    });
-}
