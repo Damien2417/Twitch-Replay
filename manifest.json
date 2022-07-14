@@ -13,6 +13,8 @@
 	  "persistent": true
   },
   
+  "web_accessible_resources": ["start-icon.png", "stop-icon.png", "clean-icon.png", "download-icon.png"],
+  
   "content_scripts": [{
     "matches": ["*://*.twitch.tv/*"],
     "js": ["jquery.js","popup.js"]
