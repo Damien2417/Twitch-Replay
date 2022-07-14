@@ -10,16 +10,23 @@ function pageRefreshed() {
 				cleanButton.classList.add("cleanButton");
 				
 				div.appendChild(cleanButton);
+				
+				var tooltip=document.createElement("div");
+				tooltip.classList.add("tooltipClean");
+				div.appendChild(tooltip);
+				
 				$('.player-controls__right-control-group:last-child').prepend(div);
 
 
-				$(".clean").css({"width": "30px","height": "30px","display": "flex", "justify-content": "center", "align-items": "center", "border-radius": "4px","cursor": "pointer"});
 				$('.clean').hover(function(){
-					$(this).css("background-color","var(--color-background-button-icon-overlay-hover)");
+					$(".tooltipClean").css({"display": "block"});					
 				},function(){
-					$(this).css("background-color","transparent");
+					$(".tooltipClean").css({"display": "none"});	
 				});
-				$(".cleanButton").css({"margin-left": "2%", "margin-right": "1%", "color":"white", "background-image": "url("+chrome.runtime.getURL("clean-icon.png")+")","background-repeat": "no-repeat", "background-position": "50% 50%", "height": "16px", "width": "16px", "border": "none"});
+				
+				$(".cleanButton").css({"background-image": "url("+chrome.runtime.getURL("resources/clean-icon.png")+")"});
+				$('.tooltipClean').attr('role', 'tooltip');
+				$(".tooltipClean").text("Clean");
 			}
 			
 			if(!$('.start').length){ 
@@ -31,17 +38,22 @@ function pageRefreshed() {
 				startButton.classList.add("startButton");
 				
 				div.appendChild(startButton);
+				
+				var tooltip=document.createElement("div");
+				tooltip.classList.add("tooltipStart");
+				div.appendChild(tooltip);
+				
 				$('.player-controls__right-control-group:last-child').prepend(div);
 
-
-				$(".start").css({"width": "30px","height": "30px","display": "flex", "justify-content": "center", "align-items": "center", "border-radius": "4px","cursor": "pointer"});
 				$('.start').hover(function(){
-					$(this).css("background-color","var(--color-background-button-icon-overlay-hover)");
+					$(".tooltipStart").css({"display": "block"});					
 				},function(){
-					$(this).css("background-color","transparent");
+					$(".tooltipStart").css({"display": "none"});	
 				});
-				$(".startButton").css({"margin-left": "2%", "margin-right": "1%", "color":"white", "background-image": "url("+chrome.runtime.getURL("start-icon.png")+")","background-repeat": "no-repeat", "background-position": "50% 50%", "height": "16px", "width": "16px", "border": "none"});
 				
+				$(".startButton").css({"background-image": "url("+chrome.runtime.getURL("resources/start-icon.png")+")"});
+				$('.tooltipStart').attr('role', 'tooltip');
+				$(".tooltipStart").text("Start record");
 				
 			}
 			//$('[data-toggle="popover"]').popover();
@@ -70,12 +82,14 @@ function start() {
 	let check="start";
 	if($(".startButton").data('state')=="stopped"){
 		check="stop";
-		$(".startButton").css({"background-image": "url("+chrome.runtime.getURL("start-icon.png")+")"});
+		$(".startButton").css({"background-image": "url("+chrome.runtime.getURL("resources/start-icon.png")+")"});
 		$(".startButton").data('state',"started");
+		$(".tooltipStart").text("Start record");
 	}
 	else{
-		$(".startButton").css({"background-image": "url("+chrome.runtime.getURL("stop-icon.png")+")"});
+		$(".startButton").css({"background-image": "url("+chrome.runtime.getURL("resources/stop-icon.png")+")"});
 		$(".startButton").data('state',"stopped");
+		$(".tooltipStart").text("Stop record");
 	}
 	chrome.runtime.sendMessage({method: check}, function(response) {
 	});
@@ -97,7 +111,6 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 		div.innerText="0mo";				
 
 		$('.player-controls__right-control-group:last-child').prepend(div)
-		$(".size").css({"margin-left": "1%","color":"white"});
 	  }
 	  $(".size").text(size+"mo");
 	  
@@ -117,16 +130,23 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 		
 		
 		div.appendChild(downloadButton);
+		
+		var tooltip=document.createElement("div");
+		tooltip.classList.add("tooltipDownload");
+		div.appendChild(tooltip);
+				
 		$('.player-controls__right-control-group:last-child').prepend(div);
-
-
-		$(".download").css({"width": "30px","height": "30px","display": "flex", "justify-content": "center", "align-items": "center", "border-radius": "4px","cursor": "pointer"});
+		
 		$('.download').hover(function(){
-			$(this).css("background-color","var(--color-background-button-icon-overlay-hover)");
+			$(".tooltipDownload").css({"display": "block"});					
 		},function(){
-			$(this).css("background-color","transparent");
+			$(".tooltipDownload").css({"display": "none"});	
 		});
-		$(".downloadButton").css({"margin-left": "2%", "margin-right": "1%", "color":"white", "background-image": "url("+chrome.runtime.getURL("download-icon.png")+")","background-repeat": "no-repeat", "background-position": "50% 50%", "height": "16px", "width": "16px", "border": "none"});
+	
+		$(".downloadButton").css({"background-image": "url("+chrome.runtime.getURL("resources/download-icon.png")+")"});
+		$('.tooltipDownload').attr('role', 'tooltip');
+		$(".tooltipDownload").text("Download record");
+
 	  }
 	sendResponse({ data: 'OK' });
   }

@@ -1,0 +1,179 @@
+.clean{
+	width: 30px;
+	height: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center; 
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.clean:hover{
+	background-color: var(--color-background-button-icon-overlay-hover);
+}
+
+.cleanButton{
+	margin-left: 2%;
+	margin-right: 1%;
+	color:white;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	height: 16px;
+	width: 16px;
+	border: none
+}
+
+.tooltipClean {
+	background-color: var(--color-background-tooltip);
+    border-radius: 0.4rem;
+    color: var(--color-text-tooltip);
+    display: none;
+    font-size: 1.3rem;
+    font-weight: 600;
+    line-height: 1.2;
+    padding: 3px 6px;
+    pointer-events: none;
+    position: absolute;
+    text-align: center;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    white-space: nowrap;
+    z-index: 2000;
+	bottom: 100%;
+    margin-bottom: 6px;
+    top: auto;
+	left: auto;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+
+.tooltipClean::before {
+    top: -6px;
+    left: -6px;
+    width: calc(100% + 12px);
+    height: calc(100% + 12px);
+    z-index: var(--z-index-below);
+}
+.tooltipClean::after {
+    border-radius: 0 0 var(--border-radius-small);
+    top: 100%;
+    left: 100%;
+    margin-top: -3px;
+    margin-left: -12px;
+	    background-color: var(--color-background-tooltip);
+    width: 6px;
+    height: 6px;
+    transform: rotate(45deg);
+    z-index: var(--z-index-below);
+}
+
+.start{
+	width: 30px;
+	height: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 4px;
+	cursor: pointer
+}
+
+.start:hover{
+	background-color: var(--color-background-button-icon-overlay-hover);
+}
+
+.startButton{
+	margin-left: 2%;
+	margin-right: 1%;
+	color:white;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	height: 16px;
+	width: 16px;
+	border: none
+}
+
+.tooltipStart {
+	background-color: var(--color-background-tooltip);
+    border-radius: 0.4rem;
+    color: var(--color-text-tooltip);
+    display: none;
+    font-size: 1.3rem;
+    font-weight: 600;
+    line-height: 1.2;
+    padding: 3px 6px;
+    pointer-events: none;
+    position: absolute;
+    text-align: center;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    white-space: nowrap;
+    z-index: 2000;
+	bottom: 100%;
+    margin-bottom: 6px;
+    top: auto;
+	left: auto;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+
+
+
+.size{
+	margin-left: 1%;
+	color: white;
+}
+
+.download{
+	width: 30px;
+	height: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 4px;
+	cursor: pointer
+}
+
+.download:hover{
+	background-color: var(--color-background-button-icon-overlay-hover);
+}
+
+.downloadButton{
+	margin-left: 2%;
+	margin-right: 1%;
+	color:white;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	height: 16px;
+	width: 16px;
+	border: none
+}
+
+.tooltipDownload {
+	background-color: var(--color-background-tooltip);
+    border-radius: 0.4rem;
+    color: var(--color-text-tooltip);
+    display: none;
+    font-size: 1.3rem;
+    font-weight: 600;
+    line-height: 1.2;
+    padding: 3px 6px;
+    pointer-events: none;
+    position: absolute;
+    text-align: center;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    white-space: nowrap;
+    z-index: 2000;
+	bottom: 100%;
+    margin-bottom: 6px;
+    top: auto;
+	left: auto;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+}

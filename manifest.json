@@ -1,10 +1,10 @@
 {
   "name": "Twitch Replay",
-  "version": "1.4",
+  "version": "2.0",
   "icons": {
-    "16": "icon16.png",
-    "48": "icon48.png",
-    "128": "icon128.png"
+    "16": "resources/icon16.png",
+    "48": "resources/icon48.png",
+    "128": "resources/icon128.png"
   },
   "manifest_version": 2,
   "permissions": ["webRequest","tabs","<all_urls>"],
@@ -13,10 +13,11 @@
 	  "persistent": true
   },
   
-  "web_accessible_resources": ["start-icon.png", "stop-icon.png", "clean-icon.png", "download-icon.png"],
+  "web_accessible_resources": ["resources/start-icon.png", "resources/stop-icon.png", "resources/clean-icon.png", "resources/download-icon.png"],
   
   "content_scripts": [{
     "matches": ["*://*.twitch.tv/*"],
+	"css": ["style.css"],
     "js": ["jquery.js","popup.js"]
   }
  ]
