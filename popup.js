@@ -95,12 +95,30 @@ function start() {
 	});
 };
 
+function startCounter(start, aim){
+	$('.size').each(function (index) {
+	    $(this).prop('Counter',start).animate({
+	        Counter: aim
+	    }, {
+	        duration: 500,
+	        easing: 'swing',
+	        step: function (now) {
+	            $(this).text(parseFloat(now).toFixed(1)+"mo");
+	        }
+	    });
+	});
+}	
+
 function clean() {
 	console.log("cleaning...");
+	$(".size").addClass('notransition');
 	$(".size").text("0mo");
+	$(".size").removeClass('notransition');
 	chrome.runtime.sendMessage({method: 'clean'}, function(response) {
 	});
 };
+
+
 			
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   if (request.method == 'blobs'){
@@ -108,12 +126,13 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 	  if(!$(".size").length){
 		var div=document.createElement("div");
 		div.classList.add("size");
-		div.innerText="0mo";				
 
 		$('.player-controls__right-control-group:last-child').prepend(div)
 	  }
-	  $(".size").text(size+"mo");
-	  
+
+	$(".size").addClass('notransition');
+	$(".size").removeClass('notransition');
+	  startCounter(parseFloat($(".size").text()), size);
 	  if(!$(".download").length){
 		var div = document.createElement('div');
 		div.classList.add("download");
