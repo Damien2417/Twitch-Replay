@@ -1,9 +1,9 @@
 {
     "name": "twitch-replay",
     "description": "Record Twitch stream",
-    "version": "0.0.1",
+    "version": "2.3",
     "homepage": "http://chrome.google.com/webstore",
-    "author": "ENTER YOUR NAME HERE",
+    "author": "Damien",
     "repository": {
         "type": "git",
         "url": "ENTER GIT REPO URL"

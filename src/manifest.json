@@ -1,10 +1,10 @@
 {
     "name": "Twitch Replay",
-    "short_name": "__MSG_appShortName__",
-    "description": "__MSG_appDescription__",
+    "short_name": "Twitch Replay",
+    "description": "Record Twitch stream",
     "homepage_url": "http://chrome.google.com/webstore",
-    "version": "2.1",
-    "version_name": "2.1",
+    "version": "2.3",
+    "version_name": "2.3",
     "manifest_version": 3,
     "default_locale": "en",
     "permissions": ["webRequest","tabs", "scripting", "downloads"],
@@ -26,7 +26,7 @@
 	"content_scripts": [
   {
     "js": ["assets/js/jquery.js","assets/js/popup.js"],
-    "matches": ["*://*.twitch.tv/*"],
+    "matches": ["<all_urls>"],
     "css": ["assets/style.css"]
   }],
   "chrome": {
