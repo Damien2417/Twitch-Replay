@@ -2,6 +2,8 @@
 
 Record Twitch stream
 
+⚠️⚠️ Chrome manifest v3 broke the mod ⚠️⚠️
+
 ## Development 
 
 This extension was created with [Extension CLI](https://oss.mobilefirst.me/extension-cli/)!
